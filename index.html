@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Aarohi ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700;800&family=Indie+Flower&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mp3"> 
+    </audio>
+
+    <div id="toast-notification" class="hidden">
+        <span id="toast-icon">❤️</span>
+        <span id="toast-msg">Message here</span>
+    </div>
+
+    <div id="hearts-container"></div>
+    <button id="music-btn">🎵 Play Our Song</button>
+
+    <div id="password-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-pass">&times;</span>
+            <h2>🔒 Secret Area</h2>
+            <p style="margin-bottom: 15px;">Enter the special code to enter:</p>
+            <input type="text" id="pass-input" placeholder="Enter code" maxlength="4" style="padding: 10px; border-radius: 10px; border: 2px solid #e91e63; width: 80%; text-align: center; font-size: 1.2rem; outline: none;">
+            <br>
+            <button id="submit-pass-btn" style="margin-top: 15px;">Unlock 🔥</button>
+            <p id="pass-error" style="color: red; display: none; margin-top: 10px; font-weight: bold;">Wrong password! 😤</p>
+        </div>
+    </div>
+
+    <div id="secret-modal" class="modal hidden">
+        <div class="modal-content secret-box">
+            <span class="close-secret">&times;</span>
+            <h2>🔥 Access Granted 🔥</h2>
+            <p class="text" style="color: white; text-align: left; font-size: 1rem; line-height: 1.6;">
+                Damn, you know the password? 😉<br><br>
+                I can't stop thinking about your <strong>1898</strong>... <br>
+                But it's not just that.<br><br>
+                I want to grab that waist, pull you close, and leave marks on your neck. 🫦<br>
+                I want to stare into your eyes while I bite your lips.<br><br>
+                You are looking <em>delicious</em>, my sexy Wifeyy. 🤤🔥
+            </p>
+        </div>
+    </div>
+
+    <div id="love-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Why I Love You... ❤️</h2>
+            <p id="modal-text">Loading...</p>
+        </div>
+    </div>
+
+    <section class="screen landing-bg active" data-emoji="❤️">
+        <div class="content-box">
+            <div class="corner-heart top-left">❤️</div>
+            <div class="corner-heart top-right">❤️</div>
+            <h1 class="title">Hiiiii <span class="highlight">Aarohi</span> ❤️</h1>
+            <h2 class="subtitle">My Januu. My Wifeyy.</h2>
+            <div id="timer-container">
+                <p>We have been in love for:</p>
+                <div id="timer">Calculating...</div>
+            </div>
+            <div id="dynamic-quote">You’re my favorite notification.</div>
+            <p class="text" style="margin-top: 20px; font-size: 1.1rem;">
+                I hope you’re smiling already,<br>because that smile is my favorite thing.<br>This space is just for you.<br>Just my heart, laid out honestly.
+            </p>
+            <button id="secret-btn" style="margin: 15px 0; background: #333; color: #fff; border: 2px solid #000; font-size: 0.8rem; padding: 5px 15px; border-radius: 20px;">🔒 Secret</button>
+            <br>
+            <button class="next-btn primary-btn">Start The Journey ➔</button>
+        </div>
+    </section>
+
+    <section class="screen rose-bg" data-emoji="🌹">
+        <div class="big-sticker" id="rose-interact">🥀</div>
+        <div class="content-box">
+            <div class="corner-heart top-left">🌹</div>
+            <span class="badge">Feb 7 • Rose Day</span>
+            <div id="rose-counter" style="display: none; background: #e91e63; color: white; padding: 5px 15px; border-radius: 15px; margin-bottom: 10px; font-weight: bold;">Roses Collected: 0</div>
+            <h2 id="rose-title">A Dead Flower? 🥀</h2>
+            <p class="text" id="rose-text">My world is kinda dull and boring without you...<br>Just like this flower.<br>Can you help me fix it? 🥺</p>
+            <p class="handwritten-note" id="rose-note">Tap the flower 3 times to water it! 💧</p>
+            <button class="love-reason-btn" id="rose-reason-btn" style="display: none;">Why I Love You? 💭</button>
+            <div class="nav-buttons">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn" id="rose-next-btn" style="display: none;">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen propose-bg" data-emoji="💍">
+        <div class="big-sticker" id="propose-interact">🎁</div>
+        <div class="content-box">
+            <div class="corner-heart top-right">💍</div>
+            <span class="badge">Feb 8 • Propose Day</span>
+            <h2 id="propose-title">I have a question...</h2>
+            <p class="text" id="propose-initial-text">I wanted to ask you something important.<br>But first...<br><br>Can you open this box for me? 👇</p>
+            <div id="propose-message" style="display: none;">
+                <p class="text" style="font-size: 1rem; line-height: 1.5;">
+                    Happy Propose Day!!<br>I’m not just asking you out.<br>I’m asking you if you’ll choose me—<br>on normal days, messy days, and everything in between.<br>So… will you be my wifeyy?<br><b>Deal? 🥺💍</b>
+                </p>
+            </div>
+            <p class="handwritten-note" id="propose-note">(Tap the box to open!)</p>
+            <button class="love-reason-btn" id="propose-reason-btn" style="display: none;">Why I Love You? 💭</button>
+            <div class="nav-buttons">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn" id="propose-next-btn" style="display: none;">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen chocolate-bg" data-emoji="🍫">
+        <div class="big-sticker" id="choco-interact">🍫</div>
+        <div class="content-box">
+            <div class="corner-heart top-left">🍫</div>
+            <span class="badge">Feb 9 • Chocolate Day</span>
+            <h2>Sweetest Addiction 🍫</h2>
+            <p id="choco-instruction" class="text" style="font-size: 1.2rem; margin: 30px 0;">There is a secret message hidden here...<br><b>Eat the chocolate to find the message! 😋</b></p>
+            <div id="choco-message" style="display: none;">
+                <p class="text" style="font-size: 1rem; line-height: 1.5;">
+                    Happy Chocolate Day, Babe!<br>Life is bitter sometimes,<br>but you make everything dangerously sweet.<br>But let’s be honest —<br>your <b>1898</b> are way more tempting than any chocolate. 😋
+                </p>
+            </div>
+            <p class="handwritten-note" id="choco-note">Tap the chocolate to take a bite! (5 bites left)</p>
+            <button class="love-reason-btn" id="choco-reason-btn" style="display: none;">Why I Love You? 💭</button>
+            <div class="nav-buttons">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn" id="choco-next-btn" style="display: none;">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen teddy-bg" data-emoji="🧸">
+        <div class="content-box">
+            <div class="corner-heart top-right">🧸</div>
+            <span class="badge">Feb 10 • Teddy Day</span>
+            <h2 id="teddy-title">My Human Teddy 🧸</h2>
+            <div id="teddy-game-container">
+                <p class="text" id="teddy-text">Happy Teddy Day, <b class="highlight">Cutieee!</b><br>I want to be <b>your</b> personal teddy bear forever.<br>Throw all your teddies, I'm yours!</p>
+                <div id="teddy-interact" style="font-size: 5rem; cursor: pointer; margin-top: 20px;">🧸</div>
+                <p class="handwritten-note" id="teddy-note">Tap the Teddy to give it a hug! 👇</p>
+            </div>
+            <div id="teddy-reveal" style="display: none;">
+                <h2 style="color: #d81b60;">Wait!! 🛑</h2>
+                <p class="text" style="font-size: 1.1rem; margin: 20px 0;">Why are you hugging a toy?? 🤨<br><b>I am your real Teddy. Come here.</b></p>
+                <button id="hug-ayush-btn" style="padding: 15px 30px; font-size: 1.1rem; background: #d81b60; color: white; border: none; border-radius: 50px; cursor: pointer; box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);">Hug Ayush Instead 🫂</button>
+            </div>
+            <div id="teddy-final-msg" style="display: none;">
+                <h2 style="color: #d81b60;">Much Better. 😌❤️</h2>
+                <p class="text">Now you are safe in my arms.<br>No refunds, no returns. You are stuck here.</p>
+            </div>
+            <div id="teddy-nav-container" style="display: none;">
+                <button class="love-reason-btn" id="teddy-reason-btn">Why I Love You? 💭</button>
+                <div class="nav-buttons">
+                    <button class="back-btn">⬅ Back</button>
+                    <button class="next-btn" id="teddy-next-btn">Next Chapter ➔</button>
+                </div>
+            </div>
+            <div class="nav-buttons" id="teddy-initial-nav">
+                <button class="back-btn">⬅ Back</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen promise-bg" data-emoji="🤞">
+        
+        <div id="flashlight-overlay"></div>
+
+        <div class="content-box" style="z-index: 60;">
+            <div class="corner-heart top-left">🕯️</div>
+            <span class="badge">Feb 11 • Promise Day</span>
+            
+            <h2 id="promise-title">Use the Light... 🔦</h2>
+            <p class="handwritten-note" style="margin-bottom: 20px;">(It's dark. Use the light to read the promise.)</p>
+
+            <div class="promise-text-container" style="font-family: 'Indie Flower', cursive; font-size: 1.25rem; line-height: 1.6; color: #4a1d24; font-weight: bold; margin: 20px 0;">
+                Happy Promise Day, <span class="highlight">Januu</span> ❤️<br><br>
+                I promise to wait without complaining,<br>
+                to miss you without blaming you,<br>
+                and to love you without conditions.<br><br>
+                Even when we can’t touch,<br>
+                can’t hug,<br>
+                can’t sit together —<br>
+                my heart stays right where you are.<br><br>
+                <span style="color: #d81b60; font-weight: 900; background: rgba(255,255,255,0.8);">This distance is temporary.<br>
+                What I feel for you isn’t. 🤍</span>
+            </div>
+
+            <button id="light-up-btn" class="pulse-anim" style="z-index: 100; position: relative;">Promise Sealed 🤞</button>
+            
+            <div id="promise-sealed-msg" class="hidden">
+                <h2 style="color: #d81b60; margin-top: 15px;">DARKNESS GONE ☀️</h2>
+                <p>I am never letting you go.</p>
+            </div>
+
+            <div class="nav-buttons" style="margin-top: 20px;">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn" id="promise-next-btn" style="display: none;">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen hug-bg" data-emoji="🫂">
+        
+        <div class="hug-arm left-arm" id="arm-left">
+            <div class="sleeve"></div>
+        </div>
+        <div class="hug-arm right-arm" id="arm-right">
+            <div class="sleeve"></div>
+        </div>
+
+        <div class="content-box">
+            <div class="corner-heart top-right">🫂</div>
+            <span class="badge">Feb 12 • Hug Day</span>
+            <h2>I Need A Hug... 🥺</h2>
+            <p class="text">
+                Happy Hug Day, <b class="highlight">Jaan!</b><br>
+                My arms are empty without you.<br>
+                Since I can't be there, I made this for you.
+            </p>
+            
+            <p class="handwritten-note" id="hug-status">Press & Hold the button to feel my hug! 👇</p>
+            
+            <button id="hug-btn" class="pulse-anim" style="background: #673ab7; font-size: 1.2rem; padding: 15px 30px; user-select: none;">
+                🤗 HUG ME
+            </button>
+            
+            <div id="hug-success" class="hidden">
+                <h3 style="color: #673ab7; margin-top: 20px;">Warm & Safe. ❤️</h3>
+                <p style="font-size: 0.9rem;">(My arms are your home.)</p>
+            </div>
+
+            <div class="nav-buttons" style="margin-top: 20px;">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn" id="hug-next-btn" style="display: none;">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen kiss-bg" data-emoji="💋" id="kiss-section">
+        <div class="big-sticker">💋</div>
+        <div class="content-box">
+            <div class="corner-heart top-left">💋</div>
+            <span class="badge">Feb 13 • Kiss Day</span>
+            <h2>Mmaaaah 💋</h2>
+            <p class="text">Happy Kiss Day, <b class="highlight">Wifeyy!</b><br>Thank you for your love and your softness. Sending you a million kisses on your forehead, cheeks, and those tasty lips today.<br>I looooovveeee you endlessly.</p>
+            <p class="handwritten-note">Mwah mwah mwah! (Tap screen to kiss)</p>
+            <button class="love-reason-btn">Why I Love You? 💭</button>
+            <div class="nav-buttons">
+                <button class="back-btn">⬅ Back</button>
+                <button class="next-btn">Next Chapter ➔</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="screen valentine-bg" data-emoji="❤️">
+        <div id="val-envelope" style="cursor: pointer; text-align: center; z-index: 100; transition: transform 0.5s;">
+            <div style="font-size: 10rem; animation: pulseSticker 1.5s infinite;">💌</div>
+            <p class="text" style="color: white; font-weight: bold; font-size: 1.5rem; margin-top: -20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                Official Document<br>(Tap to Read)
+            </p>
+        </div>
+
+        <div class="content-box special-box" id="val-content" style="display: none; transform: scale(0.8); opacity: 0; transition: all 0.8s ease;">
+            <div class="corner-heart top-right">📜</div>
+            <div id="official-stamp" class="hidden">OFFICIALLY<br>BOOKED</div>
+            <h1 class="title" style="font-size: 2rem;">RELATIONSHIP<br>AGREEMENT</h1>
+            
+            <div class="contract-paper">
+                <p class="contract-text" style="text-align: center; margin-bottom: 15px; border-bottom: 2px dashed #ccc; padding-bottom: 10px;">
+                    <b>OFFICIAL LOVE CONTRACT</b><br>
+                    Between: <b>Ayush (Husband)</b> & <b>Aarohi (Wifeyy)</b><br>
+                    Date: Feb 14, 2026
+                </p>
+                <p><b>By checking the box below, Aarohi agrees to the following legally binding terms:</b></p>
+                
+                <ul class="contract-list">
+                    <li>1. You agree to be my Valentine forever, committing to an endless journey where every sunrise and sunset is painted with the colors of our shared dreams, holding hands through the calm and the storms of life, with no expiration on this profound bond that grows stronger with each passing moment we cherish together. 📅</li>
+                    <li>2. <b>NO REFUNDS. NO RETURNS.</b> Once signed, you are stuck with me for life, embracing all the quirks, the laughter-filled days, and the quiet nights where our souls intertwine, creating a tapestry of memories that's locked away in the vault of our eternal commitment, unbreakable and filled with unwavering love. 🔒</li>
+                    <li>3. You agree to be Mrs. Ayush forever, stepping into this role with grace and joy, sharing my name in every adventure we embark on, from whispered promises under the moonlight to building a future home filled with warmth, sealing our union in a love that's as timeless as the stars above. 💍</li>
+                    <li>4. You must provide 20 mandatory kisses daily, each one a lingering touch that sparks electricity between us, whether soft and sweet in the morning light or deep and passionate under the evening sky, with a penalty of 50 more if any are missed, turning our routine into a delightful cascade of affection that never fades. 💋</li>
+                    <li>5. You agree to let me annoy you, bite you, and love you until we are old and wrinkly, allowing those playful nips to ignite giggles and those teasing moments to weave humor into our days, all while my love wraps around you like a gentle fog, growing deeper as time etches its marks on our skin and hearts. 👵👴</li>
+                    <li>6. You are legally bound to be my Valentine, my Wifeyy, and my everything forever, encompassing every facet from being my confidante in secrets to my partner in wild escapades, ensuring that in the grand story of us, you remain the irreplaceable core that lights up my entire existence without end.</li>
+                    <li>7. <b>I CAN HAVE MY 1898</b> at any time, anywhere, granting me the privilege to indulge in that special, curvaceous territory that's exclusively ours, whether in the seclusion of our bedroom or a spontaneous hidden corner, with no denials, just a mutual surrender to the waves of desire that crash over us in those heated instances. 🔥</li>
+                    <li>8. You agree that your waist belongs to my hands and your neck belongs to my lips, permitting my fingers to encircle you possessively during slow dances or tender hugs, while my mouth explores the sensitive paths along your skin, kindling flames that dance between us in every intimate embrace we share. 🫦</li>
+                    <li>9. You have chosen this headache (Ayush) for life, welcoming all my eccentric habits and boundless energy into your world, with no returns permitted, transforming what could be irritations into the charming quirks that make our love story uniquely vibrant and endlessly entertaining. 🔒</li>
+                    <li>10. You agree that you are the most beautiful girl in the world, not merely in the glow of your features but in the way your laughter echoes like music, your kindness radiates warmth, and your presence turns the mundane into magic, a beauty that captivates my soul every single day.</li>
+                    <li>11. Ayush promises to listen to your non-stop gossip/bak-bak, even if he has no idea who you are talking about, sitting attentively through every animated tale and detail, because the rhythm of your voice is a symphony that enchants me, turning unknown names into threads of our connected lives.</li>
+                    <li>12. You admit that you are a Drama Queen and I am your innocent victim, recognizing how your theatrical flair adds excitement to our moments, while I play the role of the wide-eyed bystander with playful exasperation, making every dramatic episode a fun chapter in our affectionate saga. 👑</li>
+                    <li>13. You agree to share your food with me (especially the tasty parts), extending bites from your plate during meals or snacks, allowing me to savor the best morsels in a game of culinary give-and-take that enhances our dining experiences with shared delight and closeness. 🍟</li>
+                    <li>14. My shoulder is your permanent pillow, a steadfast refuge where you can lay your head in times of weariness or joy, and you are not allowed to sleep sad, as we'll unravel any troubles with soft words until serenity blankets us both in peaceful slumber. ❤️</li>
+                    <li>15. You cannot get mad at me for more than 10 minutes, allotting just a brief window for frustrations to simmer before we bridge the gap with apologies, embraces, and renewed understanding, ensuring our conflicts are fleeting clouds that give way to clearer, brighter horizons. ⏱️</li>
+                    <li>16. You agree to let me win arguments 1% of the time (please?), graciously conceding those rare points with a knowing smile or playful concession, infusing our discussions with lightheartedness and reminding us that harmony in love far outweighs the thrill of victory. 🥺</li>
+                    <li>17. You confirm that I am the better driver (even if I am not), affirming my navigation skills during our road trips through bustling cities or serene countryside, turning every drive into a testament of your trust and our shared adventures on the open path. 🚗</li>
+                    <li>18. You agree to send me cute selfies whenever I ask, snapping those spontaneous images that capture your sparkling eyes or mischievous grin, bridging any distance with visual reminders of your beauty that make my heart race and our connection feel ever-present. 📸</li>
+                    <li>19. You agree that my hoodies look better on you than on me, freely borrowing them to wrap yourself in my lingering scent and oversized comfort, creating moments where seeing you in my clothes stirs a deep, possessive affection that warms us both inside out. 🧥</li>
+                    <li>20. We will never go to bed angry, always resolving it with a kiss, taking the time to voice concerns and find common ground before the night falls, sealing our peace with tender lips that transform potential divides into fortified bridges of love. 💤</li>
+                    <li>21. You acknowledge that you are "The Boss" but I am "The King", establishing a playful hierarchy where your wisdom guides our decisions and my strength protects our realm, forming a royal partnership that's balanced, fun, and eternally devoted. 👑</li>
+                    <li>22. You permit me to stare at you like a creep because you are hot, allowing those prolonged gazes that drink in your allure from across the room or inches away, charging the air with unspoken desire that speaks louder than words ever could. 👀</li>
+                    <li>23. You agree to hold my hand in public, even if my hands are sweaty, lacing our fingers amidst the hustle of crowds, a simple yet profound declaration of our unity that provides comfort and turns every outing into a romantic declaration. 🤝</li>
+                    <li>24. You promise to laugh at my bad jokes (or at least smile), offering genuine chuckles or gracious grins that encourage my humor, filling our days with light-hearted joy that bonds us through shared amusement, no matter how corny the punchline. 😂</li>
+                    <li>25. You give me permission to tickle you until you can't breathe, initiating surprise assaults that erupt into fits of laughter and wriggling escapes, fostering playful intimacy that reminds us of the sheer delight in being utterly silly together. 😈</li>
+                    <li>26. You agree that "1898" is the most important number in math, symbolizing that voluptuous, inviting aspect central to our private calculations of passion, where equations of longing and touch multiply into infinite sums of shared ecstasy and connection. 🔢</li>
+                    <li>27. You agree to watch movies with me and cuddle the whole time, nestling close on the sofa with blankets and snacks, our bodies melding as stories unfold on screen, turning film nights into sensory experiences where touch amplifies every emotion. 🎬</li>
+                    <li>28. You allow me to play with your hair whenever I want, twirling strands or gently massaging your scalp in idle moments, a calming gesture that expresses my fascination and draws us into tranquil closeness amid the chaos of daily life. 💇‍♀️</li>
+                    <li>29. You agree that I am the only guy allowed to look at you this way, with an intense, claiming gaze that wards off the world, preserving our exclusive intimacy where my eyes alone hold the key to unlocking your deepest layers of allure. 😠</li>
+                    <li>30. You promise to tell me when you are hungry (before you get hangry), signaling your needs early so we can embark on culinary quests together, averting moods and turning hunger into opportunities for nurturing care and delicious shared meals. 🍔</li>
+                    <li>31. You agree to be my Player 2 in every game of life, collaborating through challenges and triumphs with strategy and support, making our existence a thrilling co-op mode where victories are sweeter because they're ours to celebrate side by side. 🎮</li>
+                    <li>32. You acknowledge that your smile is my favorite curve, that radiant arc which illuminates your face and my entire world, possessing a magnetic pull that draws me in and inspires endless wonder at the simple power it holds over my heart. 😊</li>
+                    <li>33. You agree to let me take ugly photos of you sleeping, capturing those serene, unposed instants with a quiet click, mementos of your peaceful vulnerability that deepen my appreciation for the trust we share in our most unguarded hours. 😴</li>
+                    <li>34. You promise to always text me when you reach home safe, sending that reassuring message which calms my concerns and reaffirms our mutual care, a small thread that keeps our connection taut across any physical separation. 🏠</li>
+                    <li>35. You agree that our love story is better than any Bollywood movie, brimming with epic twists, heartfelt songs in the rain, and dramatic reunions, a real-life blockbuster where we star as the ultimate couple defying all odds with passion and flair. 🎥</li>
+                    <li>36. You permit me to steal kisses when you are busy doing something else, darting in for swift, surprising touches that disrupt your focus with delight, infusing your tasks with sparks of spontaneity and reminding you of my ever-present affection. 😘</li>
+                    <li>37. You agree to let me spoil you with chocolates and gifts, showering you with sweet indulgences and thoughtful surprises on random days, transforming ordinary moments into celebrations of how deeply I treasure your place in my life. 🎁</li>
+                    <li>38. You promise to handle my mood swings just like I handle yours, navigating emotional ebbs and flows with patience and empathy, creating a balanced equilibrium where we support each other through every high and low with grace. ⚖️</li>
+                    <li>39. You agree that we look perfect together, a harmonious duo in both appearance and essence, complementing one another in photographs and reality, a visual symphony that reflects the profound compatibility of our souls. 👫</li>
+                    <li>40. You allow me to call you "Pookie", "Cutie", "Shona", and "Babu", sprinkling these affectionate monikers into our conversations like sweet confetti, each one a verbal embrace that reinforces the playful tenderness of our bond. 📢</li>
+                    <li>41. You agree to be the mother of my future cats/dogs/kids, envisioning a lively household teeming with furry companions or little footsteps, where our love expands into a family legacy built on joy, care, and endless adventures. 👪</li>
+                    <li>42. You promise to never leave me on "Read" (unless you are sleeping), keeping our digital dialogues flowing with timely responses, maintaining the pulse of our communication that echoes the closeness of our hearts even when apart. 📱</li>
+                    <li>43. You agree that my hugs are the best medicine, enveloping you in a healing embrace that dispels worries and infuses vitality, a remedy always at the ready to mend whatever ails with the power of our connected warmth. 💊</li>
+                    <li>44. You allow me to bite your cheeks when they look cute, delivering those gentle, affectionate nips that prompt bubbly laughter, a quirky expression of how irresistibly adorable I find you in those charming moments. 🐹</li>
+                    <li>45. You agree to dance with me even if there is no music, moving to the silent melody of our synchronized heartbeats in unexpected places, crafting impromptu magic that celebrates the rhythm of our love without need for external tunes. 💃</li>
+                    <li>46. You promise to trust me with your heart (I will keep it safe), entrusting your deepest emotions to my care, where I'll guard them with fierce devotion, nurturing our vulnerability into a fortress of unbreakable faith and intimacy. 🔒</li>
+                    <li>47. You agree that I am your favorite annoyance, that delightful mix of teasing and charm which keeps our interactions lively, converting potential exasperations into beloved rituals that highlight the fun in our everyday togetherness. 🤪</li>
+                    <li>48. You allow me to be clingy sometimes (okay, all the time), clinging to you with affectionate holds and follows, a manifestation of my insatiable need for your presence that you welcome with open arms and matching warmth. 🐨</li>
+                    <li>49. You agree to let me carry your shopping bags, assuming the role of devoted porter during retail excursions, easing your burden while sharing in the excitement of finds, making errands feel like chivalrous dates. 🛍️</li>
+                    <li>50. You promise to love me even when I am being stupid, extending grace over my foolish lapses with humor and forgiveness, affirming that our affection is resilient, embracing flaws as part of the beautiful whole. 🥴</li>
+                    <li>51. You agree that your scent is my favorite smell, that captivating aroma which clings to fabrics and memories, evoking a sensory homecoming that draws me nearer, anchoring my senses in the essence of you. 🌸</li>
+                    <li>52. You permit me to distract you while you are studying, interjecting with light touches or amusing antics that momentarily pull you from pages, blending productivity with playful reminders of our irresistible pull. 📚</li>
+                    <li>53. You agree to grow old with me and feed me soup when I have no teeth, picturing silver-haired days of shared porches and tender caregiving, where age enhances our companionship with stories and soups of love. 🥣</li>
+                    <li>54. You promise to be my gym partner (or at least my spotter), cheering through sweats and lifts with motivation, transforming fitness routines into joint pursuits that fortify our bodies and our unbreakable team spirit. 💪</li>
+                    <li>55. You agree that pizza tastes better when we share it, debating toppings and trading slices in messy harmony, elevating simple meals into symbols of our delectable unity and the joy of mutual indulgence. 🍕</li>
+                    <li>56. You allow me to trace patterns on your back while we cuddle, my fingertips sketching invisible art on your skin during serene evenings, a soothing act that deepens our relaxation and silent communication. ✍️</li>
+                    <li>57. You agree to let me pick the movie sometimes, yielding the remote with faith in my choices, leading to evenings of discovery or nostalgia wrapped in the comfort of our entwined forms. 🍿</li>
+                    <li>58. You promise to never hide your feelings from me, unveiling joys and sorrows with honest vulnerability, cultivating a transparency that forges deeper trust and emotional intimacy in our shared world. 😢</li>
+                    <li>59. You agree that I am handsome (lie to me if you have to), bestowing compliments that inflate my ego with playful sincerity, a fun ritual that underscores your appreciation for my inner and outer appeal. 😎</li>
+                    <li>60. You permit me to put my cold feet on you to warm them up, sharing body heat in bed amid chuckles or feigned complaints, an intimate exchange that cozies up our nights with shared comfort. ❄️</li>
+                    <li>61. You agree to be the big spoon sometimes, curling around me protectively in role reversal, offering your strength in tender holds that vary our cuddles and highlight your nurturing side. 🥄</li>
+                    <li>62. You promise to defend me if anyone talks bad about me, rising with loyal ferocity to counter criticisms, a protective stance that solidifies our alliance against external doubts or harms. 🛡️</li>
+                    <li>63. You agree that weekends are reserved for "Us Time", carving out sacred hours for undivided attention, whether in lazy lounging or thrilling outings, prioritizing our bond in the rhythm of life. 🗓️</li>
+                    <li>64. You allow me to kiss your forehead whenever I leave, planting that gentle seal of affection as a parting promise, conveying care, safety, and the eager anticipation of our next reunion. 💋</li>
+                    <li>65. You agree to let me wipe your tears if you cry, being present with compassionate touches and soothing words, converting moments of vulnerability into strengthened connections through empathetic support. 💧</li>
+                    <li>66. You promise to dream about me every night, inviting visions of us into your subconscious realms, awakening with tales that blur the lines between sleep and reality in our intertwined existences. 💭</li>
+                    <li>67. You agree that "Aarohi + Ayush" is the ultimate ship, a legendary vessel navigating life's oceans with unyielding sails, destined for horizons of adventure and anchored in profound, mutual devotion. 🚢</li>
+                    <li>68. You allow me to be jealous if other guys look at you, channeling that possessiveness into tighter holds or reaffirming gestures, transforming it into fuel for our exclusive, passionate flame. 😤</li>
+                    <li>69. You agree to let me massage your feet after a long day, kneading away exhaustion with devoted hands, a pampering ritual that restores you while expressing my commitment to your well-being. 🦶</li>
+                    <li>70. You promise to make me tea/coffee exactly how I like it, preparing each brew with attentive precision, a daily act of love that warms my spirit as much as the beverage comforts my senses. ☕</li>
+                    <li>71. You agree that my lap is your designated seat, claiming it during gatherings or quiet times with natural ease, a position of intimacy that declares your belonging in the landscape of my affection. 💺</li>
+                    <li>72. You permit me to whisper naughty things in your ear in public, those hushed, tantalizing words that send secret thrills coursing through you, heightening the excitement of our shared, hidden desires amid the crowd. 🤫</li>
+                    <li>73. You agree to wear the dress I like on date nights, adorning yourself in fabrics that accentuate your grace and allure, turning our evenings into captivating displays where my admiration knows no bounds. 👗</li>
+                    <li>74. You promise to be my emergency contact forever, listed first in crises as my unwavering lifeline, symbolizing the profound integration of our lives where you're always my go-to in times of need. 🆘</li>
+                    <li>75. You agree to let me fix your hair when it's messy, tenderly arranging stray locks with my fingers, a caring intervention that blends affection with a subtle claim on your everyday beauty. ✂️</li>
+                    <li>76. You allow me to wake you up with kisses, greeting the dawn with soft presses along your features, gently coaxing you from dreams into a day illuminated by the glow of our morning intimacy. ☀️</li>
+                    <li>77. You agree that we are a "Power Couple", harnessing our combined strengths to conquer ambitions and obstacles, inspiring awe in others while reveling in the dynamic synergy that defines us. 💥</li>
+                    <li>78. You promise to keep my secrets safe, locking away confidences with ironclad discretion, building a vault of trust where our vulnerabilities are shielded, fostering deeper layers of emotional security. 🤐</li>
+                    <li>79. You agree to let me borrow your skincare products, delving into your routines for shared self-care sessions filled with tips and laughter, merging our habits into a unified pursuit of glow and closeness. 🧴</li>
+                    <li>80. You permit me to lift you up when I hug you, hoisting you into exuberant spins or holds that convey boundless joy, making every embrace an exhilarating testament to my strength and adoration. 🏋️‍♂️</li>
+                    <li>81. You agree that our future house will have a gaming room, a dedicated haven for pixelated battles and cooperative quests, where we unwind in virtual realms that echo our real-life teamwork and fun. 🕹️</li>
+                    <li>82. You promise to love me even when I haven't showered, accepting me in my rawest states with undiminished affection, proving our bond transcends appearances and roots deeply in authentic acceptance. 🚿</li>
+                    <li>83. You agree to let me pick the music in the car, curating playlists that soundtrack our journeys with moods from sentimental to energetic, enhancing the miles with melodies that resonate with our shared vibes. 🎵</li>
+                    <li>84. You allow me to brag about you to my friends, recounting your wonders with proud enthusiasm, a public celebration that amplifies my esteem and weaves you further into the fabric of my social world. 🗣️</li>
+                    <li>85. You agree to let me check your outfit before you go out, offering loving appraisals that boost your confidence, ensuring you step into the world feeling as stunning as you appear in my devoted eyes. 👗</li>
+                    <li>86. You promise to be my partner in crime, conspiring in lighthearted mischief or bold schemes with gleeful complicity, infusing our lives with thrilling secrets and the unbreakable trust of accomplices. 🚓</li>
+                    <li>87. You agree that "Good Morning" texts are mandatory, initiating each day with messages brimming with warmth and anticipation, bridging the night into daylight with consistent threads of our affection. 🌅</li>
+                    <li>88. You allow me to steal your blanket in the middle of the night, engaging in nocturnal tugs that inevitably draw us closer, turning sleep into a cozy contest resolved in entwined warmth and laughter. 🛌</li>
+                    <li>89. You agree to let me define what "1898" means today, evolving that enigmatic code into whatever intimate whim or craving whispers in the moment, keeping our private lexicon alive with layers of mystery and sensual promise. 😏</li>
+                    <li>90. You promise to never stop looking at me with those beautiful eyes, casting gazes laden with love, curiosity, or yearning that ensnare my soul, eternal windows reflecting the depth of our unspoken connection. 👁️</li>
+                    <li>91. You agree to let me plan our future vacations, mapping out escapes to exotic beaches or cozy cabins with romantic itineraries, crafting memories tailored to ignite our passions and renew our spirits. ✈️</li>
+                    <li>92. You allow me to be the reason behind your blush, eliciting those rosy flushes with compliments, touches, or recalled intimacies, a charming sign of the profound impact my presence has on your inner world. ☺️</li>
+                    <li>93. You agree that I am the funniest person you know, delighting in my range of humor from clever quips to absurd antics, filling our shared spaces with laughter that cements our joy as a core foundation. 🤣</li>
+                    <li>94. You promise to always hold my hand when crossing the street, a habitual gesture of protection and unity that symbolizes our intertwined paths through life's crossings, big and small. 🚦</li>
+                    <li>95. You agree to let me write you cheesy love letters, scrawling heartfelt declarations on paper that capture my overflowing emotions, timeless keepsakes that whisper my devotion across distances or days. 📝</li>
+                    <li>96. You allow me to be overprotective because I love you, vigilant in my care born from profound attachment, balancing your freedom with my instinct to shield you from any shadow that might dim your light. 🛡️</li>
+                    <li>97. You agree that you belong to me, body and soul, in a mutual possession where our physical forms and inner essences merge seamlessly, creating a union that's profound, passionate, and eternally claimed. ❤️</li>
+                    <li>98. You promise to say "I Love You" at least 10 times a day, integrating those powerful words into routines, surprises, and farewells, weaving a constant verbal tapestry that reinforces our unbreakable bond. 🔟</li>
+                    <li>99. You agree to tolerate my singing in the shower, enduring off-key melodies with amused patience, a quirky soundtrack to our home life that adds charm and familiarity to our daily symphony. 🚿</li>
+                    <li>100. <b>FINAL CLAUSE:</b> You, Aarohi, promise to love Ayush with all your heart, forever and ever, until the end of time, embracing the full spectrum of our journey—from tender mornings to heated nights where our bodies find rhythmic unity in the shadows, exploring every curve including those special 1898 territories with indirect whispers of desire that build to waves of shared ecstasy, all while our souls dance in eternal harmony, with no escape from this captivating destiny that binds us in cute, romantic, naughty, and dark shades of passion. There is no escape. You are mine. ❤️</li>
+                </ul>
+                
+                <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">*Scroll to the bottom to sign.</p>
+            </div>
+
+            <div class="agreement-area">
+                <label style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px 0; cursor: pointer;">
+                    <input type="checkbox" id="contract-checkbox" style="width: 20px; height: 20px; accent-color: #d81b60;">
+                    <span class="text" style="font-size: 0.9rem;">I, Aarohi, accept these terms.</span>
+                </label>
+                <div style="margin-bottom: 20px;">
+                    <input type="text" id="signature-input" placeholder="Type 'Aarohi' to sign..." 
+                           style="border: none; border-bottom: 2px solid #333; background: transparent; 
+                                  font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #d81b60; 
+                                  text-align: center; width: 80%; outline: none;" disabled>
+                </div>
+                <button id="sign-contract-btn" disabled style="opacity: 0.5; cursor: not-allowed; background: #333;">Sign Document ✍️</button>
+            </div>
+            
+            <div id="post-sign-msg" class="hidden">
+                <p class="text" style="font-size: 1.1rem; margin-top: 15px; color: #d81b60; font-weight: bold;">
+                    Welcome to the team, Mrs. Ayush! ❤️<br>I love you so much!
+                </p>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="back-btn">⬅ Replay Our Journey</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
